@@ -5,13 +5,13 @@ url-encrypt
 URL encrypting and verifying  
 Used to encrypt and verify URLs using OAuth signature encryption standards, for authentication purposes between services.
 
-##### Install
+#### Install
 
 ```sh
 $ npm install url-encrypt --save
 ```
 
-##### Encrypting
+#### Encrypting
 
 After encryption, security parameters will be added to the URL, such as an encrypted signature.
 
@@ -22,10 +22,11 @@ encryptor.config({secretKey: 'some-secret-key'});
 encryptor.encrypt('https://example.com/posts?postId=15');
 
 // The output will be something like this
-// https://example.com/posts?postId=15&prfx_nonce=...&prfx_timestamp=15..&prfx_method=sha256&prfx_signature=...
+// https://example.com/posts?postId=15&prfx_nonce=...
+// &prfx_timestamp=15..&prfx_method=sha256&prfx_signature=...
 ```
 
-##### Verification
+#### Verification
 
 Then verifying an URL using the same configuration and the secret key
 
@@ -35,7 +36,7 @@ encryptor.verify('https://example.co....')
 ```
 
 
-##### Expiration
+#### Expiration
 
 Each encryption has its own expiration date after an outflow of expiration date URL verification will turn into failure.
 The default expired date is 15 minutes, but it's configurable.
@@ -45,7 +46,7 @@ The default expired date is 15 minutes, but it's configurable.
  const signature = new Signature({ secretKey: 'some-secret-key', expiredAfterSeconds: 3600 });
 ```
 
-##### Configurations
+#### Configurations
  
 More useful configurations for setting up a working flow
 
