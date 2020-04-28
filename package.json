@@ -1,0 +1,39 @@
+{
+  "name": "url-encrypt",
+  "version": "0.0.1",
+  "description": "Used to encrypt and verify URLs using OAuth signature encryption standards",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "author": "Manvel Khnkoyan",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "5.16.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "tap": "^14.9.2"
+  },
+  "keywords": [
+    "url-encrypt",
+    "signature",
+    "url",
+    "encode",
+    "encrypt",
+    "oauth",
+    "authentication",
+    "verify",
+    "validate"
+  ],
+  "bugs": {
+    "url": "https://github.com/manvel-khnkoyan/url-encrypt/issues"
+  },
+  "homepage": "https://github.com/manvel-khnkoyan/url-encrypt#readme",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://manvel-khnkoyan@github.com/manvel-khnkoyan/url-encrypt.git"
+  }
+}
