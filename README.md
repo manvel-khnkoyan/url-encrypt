@@ -19,9 +19,9 @@ After encryption, security parameters will be added to the URL, such as an encry
 const encryptor = require('url-encrypt')();
 
 encryptor.config({secretKey: 'some-secret-key'});
-encryptor.encrypt('https://example.com/posts?postId=15');
+const url = encryptor.encrypt('https://example.com/posts?postId=15');
 
-// The output will be something like this
+// The result will be something like this
 // https://example.com/posts?postId=15&prfx_nonce=...
 // &prfx_timestamp=15..&prfx_method=sha256&prfx_signature=...
 ```

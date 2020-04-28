@@ -1,6 +1,6 @@
 {
   "name": "url-encrypt",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Used to encrypt and verify URLs using OAuth signature encryption standards",
   "main": "index.js",
   "scripts": {
