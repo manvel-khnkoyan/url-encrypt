@@ -11,20 +11,29 @@ Used to encrypt and verify URLs using OAuth signature encryption standards, for 
 $ npm install url-encrypt --save
 ```
 
-#### Encrypting
+#### Initialize
 
-After encryption, security parameters will be added to the URL, such as an encrypted signature.
+Creation of encryptor with secret Key
 
 ```javascript
-const encryptor = require('url-encrypt')();
+const urlEncrypt = require('url-encrypt');
 
-encryptor.config({secretKey: 'some-secret-key'});
+const encryptor = urlEncrypt({ /* secretKey: .. .. another options */});
+```
+
+#### Encrypting
+
+Encrypting by:
+
+```javascript
 const url = encryptor.encrypt('https://example.com/posts?postId=15');
 
-// The result will be something like this
+// The above result will be something like this
 // https://example.com/posts?postId=15&prfx_nonce=...
 // &prfx_timestamp=15..&prfx_method=sha256&prfx_signature=...
 ```
+
+As a result, security settings, such as an encrypted signature, will be added to the URL.
 
 #### Verification
 
@@ -35,20 +44,29 @@ encryptor.verify('https://example.co....')
 // returns true or false
 ```
 
-
 #### Expiration
 
-Each encryption has its own expiration date after an outflow of expiration date URL verification will turn into failure.
+Each encryption has its own expiration date after an outflow of expiration date - URL verification will turn into failure.
 The default expired date is 15 minutes, but it's configurable.
 
 ```javascript
- // Setting up expired time 1 hour
- const signature = new Signature({ secretKey: 'some-secret-key', expiredAfterSeconds: 3600 });
+// Setting up expired time 1 hour
+urlEncrypt({secretKey: 'some-secret-key', expiredAfterSeconds: 3600 });
 ```
 
-#### Configurations
+#### Config
+
+There is a way to change the configuration after initialization:
+
+```javascript
+const encryptor = require('url-encrypt')();
+
+encryptor.config({secretKey: 'some-secret-key'});
+```
+
+#### Parameters
  
-More useful configurations for setting up a working flow
+All encryption options are described below. 
 
 ```javascript
 encryptor.config({
@@ -68,7 +86,7 @@ encryptor.config({
      * Expiration date after given seconds 
      * default is 900 seconds = 15 minutes
      */
-    expiredAfterSeconds: 3600,
+    expiredAfterSeconds: 900,
 
     /*
      * Signature encoding algorithm
@@ -76,13 +94,13 @@ encryptor.config({
      * more info about supported algorithms could be found here: 
      * https://nodejs.org/api/crypto.html
      */
-    algorithm: 'sha512',
+    algorithm: 'sha256',
 
     /*
     * This parameter describes time control between separated systems, using different machines.
     * for example, the time of one server may be later than the time of another server 
     * In this case, you can adjust the differences by this parameter
     */
-    oversight: 12
+    oversight: 30
 });
 ```
