@@ -21,9 +21,7 @@ const urlEncrypt = require('url-encrypt');
 const encryptor = urlEncrypt({ /* secretKey: .. .. another options */});
 ```
 
-#### Encrypting
-
-Encrypting by:
+#### Encryption
 
 ```javascript
 const url = encryptor.encrypt('https://example.com/posts?postId=15');
